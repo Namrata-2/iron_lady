@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Lady Admin Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --admin-primary: #4F46E5;
+            --admin-secondary: #7C3AED;
+            --admin-success: #10B981;
+            --admin-warning: #F59E0B;
+            --admin-danger: #EF4444;
+            --admin-dark: #1F2937;
+            --admin-light: #F9FAFB;
+            --admin-sidebar: #111827;
+        }
+
+        body {
+            background: var(--admin-light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--admin-sidebar);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header h2 {
+            color: var(--admin-primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-header p {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--admin-primary);
+        }
+
+        .sidebar-item.active {
+            background: rgba(79, 70, 229, 0.2);
+            border-left-color: var(--admin-primary);
+        }
+
+        .sidebar-item i {
+            width: 20px;
+            margin-right: 0.75rem;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            color: var(--admin-dark);
+            font-size: 1.75rem;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--admin-primary);
+        }
+
+        .stat-card.success {
+            border-left-color: var(--admin-success);
+        }
+
+        .stat-card.warning {
+            border-left-color: var(--admin-warning);
+        }
+
+        .stat-card.danger {
+            border-left-color: var(--admin-danger);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-icon.primary {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--admin-primary);
+        }
+
+        .stat-icon.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        .stat-icon.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--admin-warning);
+        }
+
+        .stat-icon.danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--admin-dark);
+        }
+
+        .stat-label {
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+
+        .stat-change {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .stat-change.positive {
+            color: var(--admin-success);
+        }
+
+        .stat-change.negative {
+            color: var(--admin-danger);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--admin-dark);
+            font-size: 1.25rem;
+        }
+
+        .btn-admin {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--admin-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--admin-secondary);
+        }
+
+        .btn-success {
+            background: var(--admin-success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--admin-warning);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--admin-danger);
+            color: white;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--admin-light);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--admin-dark);
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .data-table tr:hover {
+            background: var(--admin-light);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--admin-warning);
+        }
+
+        .status-inactive {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--admin-primary);
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--admin-danger);
+        }
+
+        .btn-view {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--admin-success);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            color: var(--admin-dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6B7280;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--admin-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--admin-primary);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .filter-dropdown {
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                font-size: 0.875rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>IRON LADY</h2>
+                <p>Admin Portal</p>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="sidebar-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#students" class="sidebar-item" data-section="students">
+                    <i class="fas fa-users"></i>
+                    Students
+                </a>
+                <a href="#programs" class="sidebar-item" data-section="programs">
+                    <i class="fas fa-graduation-cap"></i>
+                    Programs
+                </a>
+                <a href="#enrollments" class="sidebar-item" data-section="enrollments">
+                    <i class="fas fa-clipboard-list"></i>
+                    Enrollments
+                </a>
+                <a href="#mentors" class="sidebar-item" data-section="mentors">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    Mentors
+                </a>
+                <a href="#events" class="sidebar-item" data-section="events">
+                    <i class="fas fa-calendar"></i>
+                    Events
+                </a>
+                <a href="#analytics" class="sidebar-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    Analytics
+                </a>
+                <a href="#settings" class="sidebar-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="admin-header">
+                    <h1>Dashboard</h1>
+                    <div class="admin-actions">
+                        <span>Welcome back, Admin!</span>
+                        <button class="btn-admin btn-primary">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-value">1,247</div>
+                                <div class="stat-label">Total Students</div>
+                            </div>
+                            <div class="stat-icon primary">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card success">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-value">89</div>
+                                <div class="stat-label">Active Programs</div>
+                            </div>
+                            <div class="stat-icon success">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 5% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card warning">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-value">342</div>
+                                <div class="stat-label">Pending Enrollments</div>
+                            </div>
+                            <div class="stat-icon warning">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-down"></i> 3% from last month
+                        </div>
+                    </div>
+
+                    <div class="stat-card danger">
+                        <div class="stat-header">
+                            <div>
+                                <div class="stat-value">₹2.4M</div>
+                                <div class="stat-label">Monthly Revenue</div>
+                            </div>
+                            <div class="stat-icon danger">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 18% from last month
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Recent Enrollments</h2>
+                        <button class="btn-admin btn-primary" onclick="openEnrollmentModal()">
+                            <i class="fas fa-plus"></i> New Enrollment
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Program</th>
+                                <th>Enrollment Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enrollmentsTable">
+                            <tr>
+                                <td>Priya Sharma</td>
+                                <td>C-Suite League</td>
+                                <td>2024-01-15</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Anjali Patel</td>
+                                <td>Leadership Essentials</td>
+                                <td>2024-01-14</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section id="students" class="content-section" style="display: none;">
+                <div class="admin-header">
+                    <h1>Students Management</h1>
+                    <button class="btn-admin btn-primary" onclick="openStudentModal()">
+                        <i class="fas fa-plus"></i> Add Student
+                    </button>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search students..." id="studentSearch">
+                    <select class="filter-dropdown">
+                        <option>All Programs</option>
+                        <option>C-Suite League</option>
+                        <option>100 Board Members</option>
+                        <option>Leadership Essentials</option>
+                    </select>
+                    <select class="filter-dropdown">
+                        <option>All Status</option>
+                        <option>Active</option>
+                        <option>Pending</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+
+                <div class="content-section">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Program</th>
+                                <th>Enrollment Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTable">
+                            <tr>
+                                <td>Priya Sharma</td>
+                                <td>priya.sharma@email.com</td>
+                                <td>+91-9876543210</td>
+                                <td>C-Suite League</td>
+                                <td>2024-01-15</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Programs Section -->
+            <section id="programs" class="content-section" style="display: none;">
+                <div class="admin-header">
+                    <h1>Programs Management</h1>
+                    <button class="btn-admin btn-primary" onclick="openProgramModal()">
+                        <i class="fas fa-plus"></i> Add Program
+                    </button>
+                </div>
+
+                <div class="content-section">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Program Name</th>
+                                <th>Duration</th>
+                                <th>Price</th>
+                                <th>Students Enrolled</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="programsTable">
+                            <tr>
+                                <td>C-Suite League</td>
+                                <td>6 Months</td>
+                                <td>₹75,000</td>
+                                <td>234</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Student Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Student</h3>
+                <button class="close-modal" onclick="closeModal('studentModal')">&times;</button>
+            </div>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" class="form-control" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">Email Address</label>
+                    <input type="email" class="form-control" id="studentEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentPhone">Phone Number</label>
+                    <input type="tel" class="form-control" id="studentPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentProgram">Program</label>
+                    <select class="form-control" id="studentProgram" required>
+                        <option value="">Select Program</option>
+                        <option value="C-Suite League">C-Suite League</option>
+                        <option value="100 Board Members">100 Board Members</option>
+                        <option value="Leadership Essentials">Leadership Essentials</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentGoals">Career Goals</label>
+                    <textarea class="form-control" id="studentGoals" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-admin" onclick="closeModal('studentModal')">Cancel</button>
+                    <button type="submit" class="btn-admin btn-primary">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Program Modal -->
+    <div id="programModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Program</h3>
+                <button class="close-modal" onclick="closeModal('programModal')">&times;</button>
+            </div>
+            <form id="programForm">
+                <div class="form-group">
+                    <label for="programName">Program Name</label>
+                    <input type="text" class="form-control" id="programName" required>
+                </div>
+                <div class="form-group">
+                    <label for="programDuration">Duration</label>
+                    <input type="text" class="form-control" id="programDuration" placeholder="e.g., 6 Months" required>
+                </div>
+                <div class="form-group">
+                    <label for="programPrice">Price (₹)</label>
+                    <input type="number" class="form-control" id="programPrice" required>
+                </div>
+                <div class="form-group">
+                    <label for="programDescription">Description</label>
+                    <textarea class="form-control" id="programDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="programFeatures">Key Features (comma separated)</label>
+                    <input type="text" class="form-control" id="programFeatures" placeholder="e.g., Weekly Q&A, 1-on-1 Mentorship">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-admin" onclick="closeModal('programModal')">Cancel</button>
+                    <button type="submit" class="btn-admin btn-primary">Add Program</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Enrollment Modal -->
+    <div id="enrollmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Enrollment</h3>
+                <button class="close-modal" onclick="closeModal('enrollmentModal')">&times;</button>
+            </div>
+            <form id="enrollmentForm">
+                <div class="form-group">
+                    <label for="enrollmentStudent">Select Student</label>
+                    <select class="form-control" id="enrollmentStudent" required>
+                        <option value="">Choose Student</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="enrollmentProgram">Select Program</label>
+                    <select class="form-control" id="enrollmentProgram" required>
+                        <option value="">Choose Program</option>
+                        <option value="C-Suite League">C-Suite League</option>
+                        <option value="100 Board Members">100 Board Members</option>
+                        <option value="Leadership Essentials">Leadership Essentials</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="enrollmentDate">Enrollment Date</label>
+                    <input type="date" class="form-control" id="enrollmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="enrollmentStatus">Status</label>
+                    <select class="form-control" id="enrollmentStatus" required>
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-admin" onclick="closeModal('enrollmentModal')">Cancel</button>
+                    <button type="submit" class="btn-admin btn-primary">Create Enrollment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

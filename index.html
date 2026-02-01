@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Lady - Elevating Women to the Top</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>IRON LADY</h2>
+                <span>Elevating Leaders</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="#impact" class="nav-link">Impact</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="nav-cta">
+                    <a href="tel:+91-6360823123" class="phone-btn">
+                        <i class="fas fa-phone"></i> +91-6360823123
+                    </a>
+                    <button class="signup-btn" onclick="openSignupModal()">Sign Up</button>
+                    <button class="consultation-btn">Free Consultation</button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Unleash Your</span>
+                    <br>
+                    <span class="bold-text">Inner Warrior</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Master Business War Tactics and Fast-Track Your Career to the C-Suite. 
+                    Join 100+ Women Already Earning 1CR+ Yearly Income.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Success Stories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Career Growth</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Industry Experts</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-primary">Start Your Journey</button>
+                    <button class="btn-secondary">Watch Success Stories</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="success-meter">
+                    <div class="meter-circle">
+                        <span class="percentage">100%</span>
+                        <span class="meter-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section class="ai-assistant">
+        <div class="ai-container">
+            <div class="ai-header">
+                <div class="ai-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Meet Your AI Career Coach</h3>
+                <p>Get personalized guidance on your leadership journey</p>
+            </div>
+            <div class="ai-chat" id="aiChat">
+                <div class="chat-messages">
+                    <div class="message ai-message">
+                        <p>👋 Hi! I'm your AI career coach. I can help you find the perfect program for your career goals. What's your current role and where do you want to be in 2 years?</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message..." id="chatInput">
+                    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transformative Programs</h2>
+                <p>Choose your path to leadership excellence</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card featured">
+                    <div class="program-badge">Most Popular</div>
+                    <div class="program-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>C-Suite League</h3>
+                    <p class="program-duration">6 Months Intensive</p>
+                    <p class="program-description">Master Business Warfare Tactics and reach the C-suite. Perfect for ambitious leaders targeting 1CR+ yearly income.</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Weekly Q&A Sessions</li>
+                        <li><i class="fas fa-check"></i> 1-on-1 Mentorship</li>
+                        <li><i class="fas fa-check"></i> Global Network Access</li>
+                        <li><i class="fas fa-check"></i> Board Placement Support</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price">₹75,000</span>
+                        <span class="original-price">₹1,00,000</span>
+                    </div>
+                    <button class="btn-program">Enroll Now</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>100 Board Members</h3>
+                    <p class="program-duration">4 Months Fast-Track</p>
+                    <p class="program-description">Break through career barriers and secure board positions. Learn innovative techniques for rapid advancement.</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Board Readiness Assessment</li>
+                        <li><i class="fas fa-check"></i> Networking Masterclasses</li>
+                        <li><i class="fas fa-check"></i> Personal Branding</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price">₹45,000</span>
+                    </div>
+                    <button class="btn-program">Learn More</button>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Leadership Essentials</h3>
+                    <p class="program-duration">4 Weeks Foundation</p>
+                    <p class="program-description">Build unapologetic leadership mindset. Perfect for emerging leaders and career changers.</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Core Leadership Skills</li>
+                        <li><i class="fas fa-check"></i> Office Politics Mastery</li>
+                        <li><i class="fas fa-check"></i> Confidence Building</li>
+                    </ul>
+                    <div class="program-price">
+                        <span class="price">₹15,000</span>
+                    </div>
+                    <button class="btn-program">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Real women, real transformations</p>
+            </div>
+            <div class="stories-carousel">
+                <div class="story-card active">
+                    <div class="story-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Iron Lady transformed my career. I went from mid-level management to C-suite in just 8 months!"</p>
+                        <div class="story-author">
+                            <img src="https://picsum.photos/seed/user1/50/50" alt="Author">
+                            <div>
+                                <h4>Minal Bhagat</h4>
+                                <p>CFO, Tech Company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The business warfare tactics are game-changing. I'm now on 3 boards and loving it!"</p>
+                        <div class="story-author">
+                            <img src="https://picsum.photos/seed/user2/50/50" alt="Author">
+                            <div>
+                                <h4>Nandita Roy</h4>
+                                <p>Board Director</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <div class="impact-content">
+                <div class="impact-text">
+                    <h2>Making Real Impact</h2>
+                    <p>We're not just teaching leadership - we're creating a movement of powerful women who are changing the business world.</p>
+                    <div class="impact-stats">
+                        <div class="impact-stat">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Women Leaders Trained</span>
+                        </div>
+                        <div class="impact-stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Board Positions Secured</span>
+                        </div>
+                        <div class="impact-stat">
+                            <span class="stat-number">50CR+</span>
+                            <span class="stat-label">Combined Income Increase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-visual">
+                    <div class="growth-chart">
+                        <div class="chart-bar" style="height: 60%"></div>
+                        <div class="chart-bar" style="height: 80%"></div>
+                        <div class="chart-bar" style="height: 100%"></div>
+                        <div class="chart-bar" style="height: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Hub -->
+    <section class="resources-hub">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resources Hub</h2>
+                <p>Free tools and insights for your leadership journey</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Leadership Blog</h3>
+                    <p>Weekly insights from industry experts</p>
+                    <a href="#" class="resource-link">Read Articles →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Library</h3>
+                    <p>100+ hours of free leadership content</p>
+                    <a href="#" class="resource-link">Watch Now →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-podcast"></i>
+                    </div>
+                    <h3>Podcast Series</h3>
+                    <p>Interviews with top women leaders</p>
+                    <a href="#" class="resource-link">Listen In →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Career Calculator</h3>
+                    <p>Calculate your growth potential</p>
+                    <a href="#" class="resource-link">Try Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Iron Lady</h2>
+                <p>Empowering women to break barriers and reach the pinnacle of leadership</p>
+            </div>
+            
+            <div class="about-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('mission')">Our Mission</button>
+                    <button class="tab-btn" onclick="showTab('story')">Our Story</button>
+                    <button class="tab-btn" onclick="showTab('team')">Leadership Team</button>
+                    <button class="tab-btn" onclick="showTab('values')">Core Values</button>
+                    <button class="tab-btn" onclick="showTab('achievements')">Achievements</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="mission" class="tab-pane active">
+                        <div class="mission-content">
+                            <div class="mission-text">
+                                <h3>Elevating One Million Women to the Top</h3>
+                                <p>Iron Lady is on a transformative mission to break the glass ceiling that has limited women's advancement in corporate leadership. We believe that every woman possesses the innate potential to lead, innovate, and excel at the highest levels of business.</p>
+                                <p>Through our revolutionary Business War Tactics methodology, we equip women with the strategic mindset, practical skills, and unwavering confidence needed to navigate complex corporate landscapes and secure C-suite positions.</p>
+                                <div class="mission-stats">
+                                    <div class="mission-stat">
+                                        <span class="stat-number">1M+</span>
+                                        <span class="stat-label">Women to Elevate</span>
+                                    </div>
+                                    <div class="mission-stat">
+                                        <span class="stat-number">100%</span>
+                                        <span class="stat-label">Commitment</span>
+                                    </div>
+                                    <div class="mission-stat">
+                                        <span class="stat-number">50+</span>
+                                        <span class="stat-label">Countries</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mission-visual">
+                                <div class="mission-image">
+                                    <img src="https://picsum.photos/seed/mission/400/300" alt="Women Leadership">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="story" class="tab-pane">
+                        <div class="story-content">
+                            <h3>From Vision to Reality</h3>
+                            <p>Iron Lady was born from a simple yet powerful observation: while women represent 50% of the workforce, they hold less than 25% of senior leadership positions globally. Our founder, after experiencing firsthand the challenges and biases that women face in corporate environments, decided to create a solution that would systematically address these barriers.</p>
+                            <div class="story-timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2018</div>
+                                    <div class="timeline-content">
+                                        <h4>The Beginning</h4>
+                                        <p>Started with a small group of 10 women in a Bangalore coworking space, sharing experiences and strategies for career advancement.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2020</div>
+                                    <div class="timeline-content">
+                                        <h4>First Success Stories</h4>
+                                        <p>Our first batch of graduates achieved remarkable success, with 80% securing promotions within 6 months of completing our program.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2022</div>
+                                    <div class="timeline-content">
+                                        <h4>Scaling Impact</h4>
+                                        <p>Expanded to online format, reaching women across India and internationally. Launched our flagship C-Suite League program.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-year">2024</div>
+                                    <div class="timeline-content">
+                                        <h4>Global Movement</h4>
+                                        <p>Now a thriving community of 1000+ women leaders, with alumni in Fortune 500 companies and successful entrepreneurs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="team" class="tab-pane">
+                        <div class="team-content">
+                            <h3>Meet Our Leadership Team</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="https://picsum.photos/seed/founder/200/200" alt="Founder">
+                                    </div>
+                                    <h4>Dr. Priya Nair</h4>
+                                    <p class="member-title">Founder & CEO</p>
+                                    <p class="member-bio">Former C-suite executive with 20+ years of experience in multinational corporations. Harvard Business School alumna and passionate advocate for women's leadership.</p>
+                                    <div class="member-social">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="https://picsum.photos/seed/cofounder/200/200" alt="Co-founder">
+                                    </div>
+                                    <h4>Anjali Sharma</h4>
+                                    <p class="member-title">Co-founder & Head of Programs</p>
+                                    <p class="member-bio">Expert in leadership development and organizational psychology. Designed our proprietary Business War Tactics framework.</p>
+                                    <div class="member-social">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="https://picsum.photos/seed/mentor/200/200" alt="Lead Mentor">
+                                    </div>
+                                    <h4>Ramesh Kumar</h4>
+                                    <p class="member-title">Lead Mentor & Strategy Advisor</p>
+                                    <p class="member-bio">Former CEO of three multinational companies. Brings decades of experience in corporate strategy and board governance.</p>
+                                    <div class="member-social">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-image">
+                                        <img src="https://picsum.photos/seed/head/200/200" alt="Head of Operations">
+                                    </div>
+                                    <h4>Sneha Reddy</h4>
+                                    <p class="member-title">Head of Operations</p>
+                                    <p class="member-bio">MBA from IIM Ahmedabad with expertise in scaling educational platforms. Ensures seamless experience for all our participants.</p>
+                                    <div class="member-social">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="values" class="tab-pane">
+                        <div class="values-content">
+                            <h3>Our Core Values</h3>
+                            <div class="values-grid">
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-crown"></i>
+                                    </div>
+                                    <h4>Unapologetic Leadership</h4>
+                                    <p>We believe women should lead with confidence, authenticity, and without apology. Our programs help women embrace their leadership style and own their success.</p>
+                                </div>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h4>Strategic Excellence</h4>
+                                    <p>Business War Tactics is not just about working harder—it's about working smarter. We teach strategic thinking that gives women a competitive advantage.</p>
+                                </div>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-hands-helping"></i>
+                                    </div>
+                                    <h4>Community Support</h4>
+                                    <p>We're stronger together. Our community provides unwavering support, shared knowledge, and collective celebration of each woman's success.</p>
+                                </div>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <h4>Continuous Growth</h4>
+                                    <p>Leadership is a journey, not a destination. We foster a culture of continuous learning, adaptation, and personal evolution.</p>
+                                </div>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <h4>Integrity & Ethics</h4>
+                                    <p>We lead with integrity and make ethical decisions. True leadership requires moral courage and principled action.</p>
+                                </div>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <h4>Global Impact</h4>
+                                    <p>Our vision extends beyond borders. We're building a global network of women leaders who will transform industries worldwide.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="achievements" class="tab-pane">
+                        <div class="achievements-content">
+                            <h3>Our Achievements</h3>
+                            <div class="achievements-grid">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <h4>500+ Women Promoted</h4>
+                                    <p>Our alumni have achieved remarkable career advancement, with over 500 promotions to senior leadership positions.</p>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <h4>100+ Board Positions</h4>
+                                    <p>Graduates have secured over 100 board positions across public and private companies.</p>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <h4>Award-Winning Program</h4>
+                                    <p>Recognized as "Best Leadership Development Program" by the Women in Business Awards 2023.</p>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h4>4.9/5 Rating</h4>
+                                    <p>Maintaining exceptional satisfaction ratings from participants across all programs.</p>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>300% Average ROI</h4>
+                                    <p>Participants report an average 300% return on investment through salary increases and career advancement.</p>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h4>Global Community</h4>
+                                    <p>Built a thriving community of 1000+ women leaders across 15+ countries.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Career?</h2>
+                <p>Join thousands of women who have already fast-tracked their success</p>
+                <div class="cta-actions">
+                    <button class="btn-primary">Start Free Assessment</button>
+                    <button class="btn-secondary">Schedule a Call</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join Iron Lady Community</h3>
+                <button class="close-modal" onclick="closeModal('signupModal')">&times;</button>
+            </div>
+            <div class="signup-options">
+                <div class="google-signin">
+                    <h4>Quick Sign In with Google</h4>
+                    <div id="g_id_onload"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                         data-callback="handleGoogleSignIn"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="rectangular"
+                         data-theme="filled_blue"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                </div>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <form id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <input type="tel" class="form-control" id="signupPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentRole">Current Role</label>
+                        <select class="form-control" id="currentRole" required>
+                            <option value="">Select your current role</option>
+                            <option value="entry-level">Entry Level Professional</option>
+                            <option value="mid-level">Mid-Level Manager</option>
+                            <option value="senior-manager">Senior Manager</option>
+                            <option value="director">Director</option>
+                            <option value="vp">Vice President</option>
+                            <option value="entrepreneur">Entrepreneur</option>
+                            <option value="business-owner">Business Owner</option>
+                            <option value="career-changer">Career Changer</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="careerGoals">Career Goals</label>
+                        <textarea class="form-control" id="careerGoals" rows="3" placeholder="Tell us about your career aspirations..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="programInterest">Program of Interest</label>
+                        <select class="form-control" id="programInterest">
+                            <option value="">Select a program</option>
+                            <option value="c-suite">C-Suite League</option>
+                            <option value="board-members">100 Board Members</option>
+                            <option value="leadership">Leadership Essentials</option>
+                            <option value="masterclass">MasterClass</option>
+                            <option value="not-sure">Not sure - Need guidance</option>
+                        </select>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" checked>
+                            <span class="checkmark"></span>
+                            Send me leadership insights and program updates
+                        </label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" onclick="showTerms()">Terms & Conditions</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Create Account</button>
+                    </div>
+                </form>
+                
+                <div class="login-prompt">
+                    <p>Already have an account? <a href="#" onclick="openLoginModal()">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome Back</h3>
+                <button class="close-modal" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <div class="login-options">
+                <div class="google-signin">
+                    <h4>Sign In with Google</h4>
+                    <div id="g_id_onload_login"
+                         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                         data-callback="handleGoogleSignIn"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="rectangular"
+                         data-theme="filled_blue"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                </div>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                        <div class="password-toggle">
+                            <i class="fas fa-eye" onclick="togglePassword('loginPassword')"></i>
+                        </div>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Sign In</button>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+                    </div>
+                </form>
+                
+                <div class="signup-prompt">
+                    <p>Don't have an account? <a href="#" onclick="openSignupModal()">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>We're here to support your leadership journey</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>+91-6360823123</p>
+                            <p>Mon-Sat: 10:00 AM - 7:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p>info@ironlady.com</p>
+                            <p>support@ironlady.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Visit Us</h4>
+                            <p>133-172, 5th Main Rd, Indira Nagar II Stage</p>
+                            <p>Hoysala Nagar, Indiranagar, Bengaluru</p>
+                            <p>Karnataka 560038, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 10:00 AM - 7:00 PM</p>
+                            <p>Saturday: 10:00 AM - 5:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Full Name</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" class="form-control" id="contactPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select class="form-control" id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="program-inquiry">Program Inquiry</option>
+                                <option value="enrollment">Enrollment Support</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="media">Media & Press</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>IRON LADY</h3>
+                    <p>Elevating a million women to the top through transformative leadership education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">C-Suite League</a></li>
+                        <li><a href="#">100 Board Members</a></li>
+                        <li><a href="#">Leadership Essentials</a></li>
+                        <li><a href="#">MasterClass</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91-6360823123</li>
+                        <li><i class="fas fa-envelope"></i> info@ironlady.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 IRON LADY. All Rights Reserved. A Unit of Magic Wand Empowerment Private Limited</p>
+                <div class="footer-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cancellation Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
